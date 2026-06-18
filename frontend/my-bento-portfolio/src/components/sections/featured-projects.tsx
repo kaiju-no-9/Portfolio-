@@ -121,11 +121,11 @@ export function AIProjectsCard() {
       githubLink: "https://github.com/kaiju-no-9/Rusty_token",
     },
     {
-      title: "PyTorch Notes",
+      title: "GrabPic",
       description:
-        "Comprehensive PyTorch learning notebooks covering deep learning fundamentals and practical implementations.",
-      tags: ["Python", "PyTorch", "ML"],
-      githubLink: "https://github.com/kaiju-no-9/Pytorch-Notes-",
+        "AI-powered photo grabbing platform built with modern web technologies for intelligent image management.",
+      tags: ["TypeScript", "AI", "Full Stack"],
+      githubLink: "https://github.com/kaiju-no-9/GrabPic",
     },
   ];
 
@@ -153,18 +153,11 @@ export function AIProjectsCard() {
 export function BackendProjectsCard() {
   const projects: Project[] = [
     {
-      title: "Advanced Backend",
+      title: "Steam Backend",
       description:
-        "Production-grade backend architecture with TypeScript, covering advanced patterns and best practices.",
-      tags: ["TypeScript", "Backend", "Architecture"],
-      githubLink: "https://github.com/kaiju-no-9/Advanced-backend",
-    },
-    {
-      title: "Job Portal",
-      description:
-        "Full-featured job portal platform where users can post, send, and deliver jobs. Built with Prisma ORM.",
-      tags: ["TypeScript", "Prisma", "Full Stack"],
-      githubLink: "https://github.com/kaiju-no-9/job_portal",
+        "A scalable backend service mimicking Steam's core functionalities.",
+      tags: ["Backend", "Scalable", "System"],
+      githubLink: "https://github.com/kaiju-no-9/steam",
     },
   ];
 

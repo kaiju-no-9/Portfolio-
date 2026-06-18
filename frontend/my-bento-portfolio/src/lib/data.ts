@@ -16,11 +16,6 @@ export const fullStackProjects = [
       description: "Security monitoring and alerting platform",
       github: "https://github.com/kaiju-no-9/Pulse_Guard",
     },
-    {
-      name: "Job Portal",
-      description: "Full-featured job portal platform where users can post, send, and deliver jobs (Prisma practice)",
-      github: "https://github.com/kaiju-no-9/job_portal",
-    },
   ];
   
   export const aiProjects = [
@@ -31,10 +26,9 @@ export const fullStackProjects = [
       github: "https://github.com/kaiju-no-9/Rusty_token",
     },
     {
-      name: "PyTorch Notes",
-      description:
-        "Comprehensive Jupyter notebooks covering PyTorch fundamentals, deep learning concepts, and practical implementations.",
-      github: "https://github.com/kaiju-no-9/Pytorch-Notes-",
+      name: "GrabPic",
+      description: "AI-powered photo grabbing platform for intelligent image management",
+      github: "https://github.com/kaiju-no-9/GrabPic",
     },
     {
       name: "RL Model for Meta Hackathon",
@@ -46,10 +40,10 @@ export const fullStackProjects = [
   
   export const backendProjects = [
     {
-      name: "Advanced Backend",
+      name: "Steam Backend",
       description:
-        "Production-grade backend architecture with TypeScript, covering advanced patterns, authentication, and best practices.",
-      github: "https://github.com/kaiju-no-9/Advanced-backend",
+        "Scalable backend project.",
+      github: "https://github.com/kaiju-no-9/steam",
     },
     {
       name: "LLD TypeScript",
@@ -77,4 +71,17 @@ export const fullStackProjects = [
     { name: "System Design", description: "Distributed systems and architecture patterns" },
     { name: "Low Level Design", description: "Object-oriented design and SOLID principles" },
     { name: "Competitive Programming", description: "Data structures and algorithms" },
+  ];
+
+  export const openSourceContributions = [
+    {
+      name: "Sugar Labs",
+      description: "Open source educational software and activities",
+      github: "https://github.com/sugarlabs",
+    },
+    {
+      name: "MLabs",
+      description: "Machine learning and open source contributions",
+      github: "https://github.com/mlabs",
+    }
   ];

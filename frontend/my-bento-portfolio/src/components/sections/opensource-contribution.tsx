@@ -5,9 +5,8 @@ import { Card } from "../ui/card";
 import { ExternalLink, GitFork, Star } from "lucide-react";
 
 const featuredRepos = [
-  { name: "GrabPic", description: "AI-powered photo grabbing platform", lang: "TypeScript" },
-  { name: "t-8-t", description: "Crypto automation platform", lang: "TypeScript" },
-  { name: "Rusty_token", description: "AI credit optimization tool", lang: "Rust" },
+  { name: "Sugar Labs", description: "Open source educational software and activities", lang: "Python/JS" },
+  { name: "MLabs", description: "Machine learning and open source contributions", lang: "TypeScript/Python" },
 ];
 
 export function OpenSourceContribution() {
