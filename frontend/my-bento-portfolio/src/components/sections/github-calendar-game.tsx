@@ -484,8 +484,8 @@ export function GithubCalendarGame() {
               </div>
               <p className="text-gh-500 text-xs mt-0.5">
                 {isAutoPlaying 
-                  ? "🤖 AI is clearing contributions! Press WASD / Arrow keys to take control instantly." 
-                  : "🎮 Use keyboard arrows or WASD to eat the remaining contributions."
+                  ? " AI is clearing contributions! Press WASD / Arrow keys to take control instantly." 
+                  : " Use keyboard arrows or WASD to eat the remaining contributions."
                 }
               </p>
             </div>

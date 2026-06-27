@@ -7,7 +7,7 @@ import { Card } from "../ui/card";
 import { SkillRadial } from "../ui/skill-radial";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReact, faDocker, faGitAlt, faNode, faPython } from "@fortawesome/free-brands-svg-icons";
-import { faDatabase, faBolt, faTerminal, faBrain, faServer } from "@fortawesome/free-solid-svg-icons";
+import { faDatabase, faBolt, faTerminal, faBrain, faServer, faCloud, faInfinity } from "@fortawesome/free-solid-svg-icons";
 
 export function Header() {
   return (
@@ -58,6 +58,8 @@ export function Header() {
           { name: "CLI Tools", level: 78, color: "text-gh-200", icon: <FontAwesomeIcon icon={faTerminal} className="w-5 h-5" /> },
           { name: "Docker", level: 78, color: "text-gh-200", icon: <FontAwesomeIcon icon={faDocker} className="w-5 h-5" /> },
           { name: "Git", level: 90, color: "text-gh-200", icon: <FontAwesomeIcon icon={faGitAlt} className="w-5 h-5" /> },
+          { name: "Deployment", level: 80, color: "text-gh-200", icon: <FontAwesomeIcon icon={faCloud} className="w-5 h-5" /> },
+          { name: "DevOps", level: 78, color: "text-gh-200", icon: <FontAwesomeIcon icon={faInfinity} className="w-5 h-5" /> },
         ]} />
       </Card>
     </>

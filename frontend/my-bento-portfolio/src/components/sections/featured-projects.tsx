@@ -5,6 +5,7 @@ import React from "react";
 import { Card } from "../ui/card";
 import { ExternalLink, Github, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 interface Project {
   title: string;
@@ -13,6 +14,7 @@ interface Project {
   githubLink?: string;
   liveLink?: string;
   videoDemo?: string;
+  imageDemo?: string;
 }
 
 function Tag({ children }: { children: React.ReactNode }) {
@@ -35,24 +37,56 @@ function ViewAllLink({ href, label = "View All" }: { href: string; label?: strin
   );
 }
 
+function getYouTubeEmbedUrl(url: string): string | null {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  const match = url.match(regExp);
+  if (match && match[2].length === 11) {
+    const videoId = match[2];
+    return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&modestbranding=1&rel=0`;
+  }
+  return null;
+}
+
 function ProjectCard({ project }: { project: Project }) {
+  const ytEmbedUrl = project.videoDemo ? getYouTubeEmbedUrl(project.videoDemo) : null;
+
   return (
     <div className="bg-white/[0.03] rounded-xl border border-white/[0.06] hover:border-white/[0.1] transition-colors p-4 flex flex-col justify-between h-full">
       <div>
-        {project.videoDemo && (
+        {project.videoDemo ? (
           <div className="mb-3 rounded-lg overflow-hidden border border-white/[0.06] bg-black/20 aspect-video flex items-center justify-center">
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover"
-            >
-              <source src={project.videoDemo} />
-              Your browser does not support the video tag.
-            </video>
+            {ytEmbedUrl ? (
+              <iframe
+                src={ytEmbedUrl}
+                className="w-full h-full object-cover border-0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                title={project.title}
+              />
+            ) : (
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover"
+              >
+                <source src={project.videoDemo} />
+                Your browser does not support the video tag.
+              </video>
+            )}
           </div>
-        )}
+        ) : project.imageDemo ? (
+          <div className="mb-3 rounded-lg overflow-hidden border border-white/[0.06] bg-black/20 aspect-video flex items-center justify-center relative">
+            <Image
+              src={project.imageDemo}
+              alt={project.title}
+              fill
+              className="w-full h-full object-cover animate-fade-in"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
+        ) : null}
         <div className="flex flex-wrap gap-1.5 mb-2">
           {project.tags.map((tag, i) => (
             <Tag key={i}>{tag}</Tag>
@@ -92,11 +126,12 @@ function ProjectCard({ project }: { project: Project }) {
 export function FullStackProjectsCard() {
   const projects: Project[] = [
     {
-      title: "GrabPic",
+      title: "Pulse Guard",
       description:
-        "AI-powered photo grabbing platform built with modern web technologies for intelligent image management.",
-      tags: ["TypeScript", "AI", "Full Stack"],
-      githubLink: "https://github.com/kaiju-no-9/GrabPic",
+        "Real-time security monitoring and alerting platform for detecting infrastructure anomalies and notifying administrators.",
+      tags: ["TypeScript", "Security", "Full Stack"],
+      githubLink: "https://github.com/kaiju-no-9/Pulse_Guard",
+      videoDemo: "https://www.youtube.com/watch?v=j1eyeBGoctg",
     },
     {
       title: "t-8-t",
@@ -113,7 +148,7 @@ export function FullStackProjectsCard() {
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2.5">
           <div className="w-6 h-6 rounded-md bg-primary/20 flex items-center justify-center">
-            <span className="text-xs">🚀</span>
+            <span className="text-xs">၊၊||၊</span>
           </div>
           <h3 className="font-medium text-sm text-white">Full Stack Projects</h3>
         </div>
@@ -137,6 +172,7 @@ export function AIProjectsCard() {
         "A Rust-based tool for optimizing credits in AI conversations, reducing token usage and cost.",
       tags: ["Rust", "AI", "Optimization"],
       githubLink: "https://github.com/kaiju-no-9/Rusty_token",
+      imageDemo: "/coming_soon.png",
     },
     {
       title: "GrabPic",
@@ -144,6 +180,7 @@ export function AIProjectsCard() {
         "AI-powered photo grabbing platform built with modern web technologies for intelligent image management.",
       tags: ["TypeScript", "AI", "Full Stack"],
       githubLink: "https://github.com/kaiju-no-9/GrabPic",
+      imageDemo: "/coming_soon.png",
     },
   ];
 
@@ -152,7 +189,7 @@ export function AIProjectsCard() {
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2.5">
           <div className="w-6 h-6 rounded-md bg-accent/20 flex items-center justify-center">
-            <span className="text-xs">🤖</span>
+            <span className="text-xs">.✦ ݁˖</span>
           </div>
           <h3 className="font-medium text-sm text-white">AI & Machine Learning</h3>
         </div>
