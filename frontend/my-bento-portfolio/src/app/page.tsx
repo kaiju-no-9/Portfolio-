@@ -11,6 +11,7 @@ import { Footer } from "@/components/sections/footer";
 import { WorkExperienceSection } from "@/components/sections/work-experience-section";
 import { OpenSourceContribution } from "@/components/sections/opensource-contribution";
 import { FullStackProjectsCard, AIProjectsCard, BackendProjectsCard } from "@/components/sections/featured-projects";
+import { GithubCalendarGame } from "@/components/sections/github-calendar-game";
 
 function HomeContent() {
   return (
@@ -34,6 +35,9 @@ function HomeContent() {
 
           {/* backend & tools full-width */}
           <BackendProjectsCard />
+
+          {/* github activity arcade */}
+          <GithubCalendarGame />
 
           {/* footer */}
           <Footer />

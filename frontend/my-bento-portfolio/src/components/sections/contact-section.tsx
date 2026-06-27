@@ -33,7 +33,7 @@ export function ContactSection() {
             label="GitHub"
           />
           <SocialIcon
-            href="https://linkedin.com/in/nishchay-kumar"
+            href="https://www.linkedin.com/in/nishchay-kumar-63bb92325/"
             icon={<Linkedin size={20} />}
             label="LinkedIn"
           />

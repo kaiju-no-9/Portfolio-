@@ -12,6 +12,7 @@ interface Project {
   tags: string[];
   githubLink?: string;
   liveLink?: string;
+  videoDemo?: string;
 }
 
 function Tag({ children }: { children: React.ReactNode }) {
@@ -36,14 +37,30 @@ function ViewAllLink({ href, label = "View All" }: { href: string; label?: strin
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <div className="bg-white/[0.03] rounded-xl border border-white/[0.06] hover:border-white/[0.1] transition-colors p-4">
-      <div className="flex flex-wrap gap-1.5 mb-2">
-        {project.tags.map((tag, i) => (
-          <Tag key={i}>{tag}</Tag>
-        ))}
+    <div className="bg-white/[0.03] rounded-xl border border-white/[0.06] hover:border-white/[0.1] transition-colors p-4 flex flex-col justify-between h-full">
+      <div>
+        {project.videoDemo && (
+          <div className="mb-3 rounded-lg overflow-hidden border border-white/[0.06] bg-black/20 aspect-video flex items-center justify-center">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            >
+              <source src={project.videoDemo} />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        )}
+        <div className="flex flex-wrap gap-1.5 mb-2">
+          {project.tags.map((tag, i) => (
+            <Tag key={i}>{tag}</Tag>
+          ))}
+        </div>
+        <h4 className="font-semibold text-sm text-white mb-1">{project.title}</h4>
+        <p className="text-gh-500 text-sm mb-3 leading-relaxed">{project.description}</p>
       </div>
-      <h4 className="font-semibold text-sm text-white mb-1">{project.title}</h4>
-      <p className="text-gh-500 text-sm mb-3 leading-relaxed">{project.description}</p>
       <div className="flex gap-2">
         {project.githubLink && (
           <a
@@ -87,6 +104,7 @@ export function FullStackProjectsCard() {
         "A crypto-based automation platform inspired by n8n, enabling workflow automation for blockchain tasks.",
       tags: ["TypeScript", "Crypto", "Automation"],
       githubLink: "https://github.com/kaiju-no-9/t-8-t",
+      videoDemo: "/videos/t-8-t.mov",
     },
   ];
 
