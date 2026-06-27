@@ -10,9 +10,10 @@ export function CopyEmailButton({ email }: CopyEmailButtonProps) {
     navigator.clipboard.writeText(email);
     toast.success("Email copied to clipboard!", {
       style: {
-        background: "rgb(20, 20, 20)",
-        color: "#fff",
-        border: "1px solid rgb(30, 30, 30)",
+        background: "var(--card-bg)",
+        color: "var(--text-heading)",
+        border: "1px solid var(--card-border)",
+        backdropFilter: "blur(8px)",
       },
       icon: "📧",
       duration: 2000,

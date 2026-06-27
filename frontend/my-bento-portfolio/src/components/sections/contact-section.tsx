@@ -3,6 +3,7 @@ import { CopyEmailButton } from "../ui/copy-email-button";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { SocialIcon } from "../ui/social-icon";
 import { Card } from "../ui/card";
+import { ThemeToggle } from "../ui/theme-toggle";
 
 export function ContactSection() {
   return (
@@ -40,14 +41,17 @@ export function ContactSection() {
           <CopyEmailButton email="nishchay@example.com" />
         </div>
 
-        {/* Right CTA */}
-        <a
-          href="mailto:nishchay@example.com"
-          className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white text-black text-sm font-medium hover:bg-gray-200 transition-colors"
-        >
-          <Mail size={14} />
-          <span>Contact</span>
-        </a>
+        {/* Right: theme toggle + CTA */}
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
+          <a
+            href="mailto:nishchay@example.com"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white text-black text-sm font-medium hover:bg-gray-200 transition-colors"
+          >
+            <Mail size={14} />
+            <span>Contact</span>
+          </a>
+        </div>
       </div>
     </Card>
   );

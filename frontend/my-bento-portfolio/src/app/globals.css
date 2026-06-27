@@ -2,7 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* ──────────────────────────────────────────────
+   DARK THEME (default)
+   ────────────────────────────────────────────── */
+:root,
+[data-theme="dark"] {
+  /* brand colors mapped to dark equivalents for default/dark mode */
+  --color-canvas: #000000;
+  --color-surface-soft: #0a0a0a;
+  --color-surface-card: #111111;
+  --color-surface-cream-strong: #1a1a1a;
+  --color-surface-dark: #0a0a0a;
+  --color-surface-dark-elevated: #111111;
+  --color-surface-dark-soft: #1a1a1a;
+  --color-hairline: #262626;
+  --color-hairline-soft: #1a1a1a;
+
   /* vercel-style pure neutral scale */
   --black: #000000;
   --gray-950: #0a0a0a;
@@ -34,6 +49,113 @@
   --purple: #888888;
   --success: #a1a1a1;
   --warning: #888888;
+
+  /* theme-aware token aliases */
+  --page-bg: #000000;
+  --card-bg: rgba(17, 17, 17, 0.8);
+  --card-border: rgba(255, 255, 255, 0.06);
+  --card-border-hover: rgba(255, 255, 255, 0.12);
+  --card-shadow-inner: inset 0 0 0 1px rgba(255, 255, 255, 0.06), inset 0 0 30px rgba(255, 255, 255, 0.03);
+  --text-heading: #ffffff;
+  --text-body: #888888;
+  --text-highlight: #ffffff;
+  --text-link-hover: #d4d4d4;
+  --tag-bg: rgba(255, 255, 255, 0.06);
+  --tag-text: #888888;
+  --btn-solid-bg: #ffffff;
+  --btn-solid-text: #000000;
+  --btn-solid-hover: #e5e5e5;
+  --btn-ghost-bg: rgba(255, 255, 255, 0.06);
+  --btn-ghost-hover: rgba(255, 255, 255, 0.1);
+  --btn-ghost-text: #a1a1a1;
+  --grid-line-color: rgba(255, 255, 255, 0.06);
+  --grid-dot-mask: black;
+  --tooltip-bg: #161b22;
+  --tooltip-border: #30363d;
+  --skeleton-bg: rgba(255, 255, 255, 0.04);
+  --divider: rgba(255, 255, 255, 0.06);
+  --radial-track: #262626;
+  --radial-fill: #ededed;
+
+  /* toggle specific */
+  --toggle-track: #262626;
+  --toggle-thumb: #ffffff;
+  --toggle-icon: #000000;
+}
+
+/* ──────────────────────────────────────────────
+   LIGHT THEME
+   ────────────────────────────────────────────── */
+[data-theme="light"] {
+  /* Warm cream palette as requested */
+  --color-canvas: #faf9f5;
+  --color-surface-soft: #f5f0e8;
+  --color-surface-card: #efe9de;
+  --color-surface-cream-strong: #e8e0d2;
+  --color-surface-dark: #181715;
+  --color-surface-dark-elevated: #252320;
+  --color-surface-dark-soft: #1f1e1b;
+  --color-hairline: #e6dfd8;
+  --color-hairline-soft: #ebe6df;
+
+  --black: #ffffff;
+  --gray-950: var(--color-surface-soft);
+  --gray-900: var(--color-surface-card);
+  --gray-800: var(--color-surface-cream-strong);
+  --gray-700: var(--color-hairline);
+  --gray-600: #a3a3a3;
+  --gray-500: #737373;
+  --gray-400: #525252;
+  --gray-300: #404040;
+  --gray-200: #262626;
+  --gray-100: #171717;
+  --white: #000000;
+
+  --background: var(--color-canvas);
+  --surface: var(--color-surface-soft);
+  --card: var(--color-surface-card);
+  --border: var(--color-hairline);
+
+  --text-primary: #181715;
+  --text-secondary: #252320;
+  --text-muted: #525252;
+
+  --primary: #181715;
+  --secondary: #525252;
+  --accent: #252320;
+  --purple: #525252;
+  --success: #525252;
+  --warning: #525252;
+
+  --page-bg: var(--color-canvas);
+  --card-bg: var(--color-surface-card);
+  --card-border: var(--color-hairline);
+  --card-border-hover: #d5cfc6; /* Warm hover border step */
+  --card-shadow-inner: inset 0 0 0 1px var(--color-hairline-soft), 0 1px 3px rgba(0, 0, 0, 0.04);
+  --text-heading: #181715;
+  --text-body: #525252;
+  --text-highlight: #181715;
+  --text-link-hover: #252320;
+  --tag-bg: var(--color-surface-soft);
+  --tag-text: #525252;
+  --btn-solid-bg: #181715;
+  --btn-solid-text: var(--color-canvas);
+  --btn-solid-hover: #252320;
+  --btn-ghost-bg: var(--color-surface-soft);
+  --btn-ghost-hover: var(--color-surface-card);
+  --btn-ghost-text: #181715;
+  --grid-line-color: rgba(24, 23, 21, 0.05);
+  --grid-dot-mask: black;
+  --tooltip-bg: var(--color-canvas);
+  --tooltip-border: var(--color-hairline);
+  --skeleton-bg: var(--color-surface-soft);
+  --divider: var(--color-hairline-soft);
+  --radial-track: var(--color-surface-soft);
+  --radial-fill: #181715;
+
+  --toggle-track: var(--color-surface-soft);
+  --toggle-thumb: #181715;
+  --toggle-icon: var(--color-canvas);
 }
 
 body {
@@ -45,8 +167,9 @@ body {
 }
 
 html {
-  background: #000000;
+  background: var(--page-bg);
   scroll-behavior: smooth;
+  transition: background 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body::before {
@@ -54,15 +177,64 @@ body::before {
   position: fixed;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    linear-gradient(var(--grid-line-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line-color) 1px, transparent 1px);
   background-size: 64px 64px;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, var(--grid-dot-mask) 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, var(--grid-dot-mask) 40%, transparent 100%);
   pointer-events: none;
   z-index: -1;
 }
 
+/* ──────────────────────────────────────────────
+   THEME TOGGLE BUTTON
+   ────────────────────────────────────────────── */
+.theme-toggle-btn {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.theme-toggle-track {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  background: var(--toggle-track);
+  border-radius: 12px;
+  transition: background 0.3s ease;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.15);
+}
+
+.theme-toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background: var(--toggle-thumb);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--toggle-icon);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              background 0.3s ease,
+              color 0.3s ease;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+
+[data-theme="light"] .theme-toggle-thumb {
+  transform: translateX(20px);
+}
+
+/* ──────────────────────────────────────────────
+   UTILITIES
+   ────────────────────────────────────────────── */
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -146,4 +318,170 @@ a[class*="rounded"]:active, button:active {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ──────────────────────────────────────────────
+   THEME-AWARE OVERRIDES
+   These remap hardcoded white/black references
+   used across components to theme-aware values.
+   ────────────────────────────────────────────── */
+
+/* Page text-white → heading color */
+[data-theme="light"] .text-white:not(.footer-card, .footer-card *, .bg-surface-dark, .bg-surface-dark *) {
+  color: var(--text-heading);
+}
+
+/* Invert CTA button colors in light mode */
+[data-theme="light"] .bg-white:not(.footer-card, .footer-card *, .bg-surface-dark, .bg-surface-dark *) {
+  background-color: var(--btn-solid-bg);
+}
+[data-theme="light"] .text-black:not(.footer-card, .footer-card *, .bg-surface-dark, .bg-surface-dark *) {
+  color: var(--btn-solid-text);
+}
+[data-theme="light"] .hover\:bg-gray-200:hover:not(.footer-card, .footer-card *, .bg-surface-dark, .bg-surface-dark *) {
+  background-color: var(--btn-solid-hover);
+}
+
+/* White alpha backgrounds → black alpha in light */
+[data-theme="light"] .bg-white\/\[0\.06\]:not(.footer-card, .footer-card *),
+[data-theme="light"] .bg-white\/\[0\.03\]:not(.footer-card, .footer-card *),
+[data-theme="light"] .bg-white\/\[0\.04\]:not(.footer-card, .footer-card *),
+[data-theme="light"] .bg-white\/\[0\.05\]:not(.footer-card, .footer-card *) {
+  background-color: var(--tag-bg);
+}
+[data-theme="light"] .hover\:bg-white\/\[0\.1\]:hover:not(.footer-card, .footer-card *),
+[data-theme="light"] .hover\:bg-white\/\[0\.06\]:hover:not(.footer-card, .footer-card *),
+[data-theme="light"] .hover\:bg-white\/\[0\.08\]:hover:not(.footer-card, .footer-card *),
+[data-theme="light"] .hover\:bg-white\/\[0\.12\]:hover:not(.footer-card, .footer-card *),
+[data-theme="light"] .hover\:bg-white\/\[0\.03\]:hover:not(.footer-card, .footer-card *) {
+  background-color: var(--btn-ghost-hover);
+}
+
+/* Borders */
+[data-theme="light"] .border-white\/\[0\.06\]:not(.footer-card, .footer-card *),
+[data-theme="light"] .border-white\/\[0\.04\]:not(.footer-card, .footer-card *),
+[data-theme="light"] .border-white\/\[0\.1\]:not(.footer-card, .footer-card *),
+[data-theme="light"] .border-white\/\[0\.08\]:not(.footer-card, .footer-card *) {
+  border-color: var(--card-border);
+}
+[data-theme="light"] .hover\:border-white\/\[0\.12\]:hover:not(.footer-card, .footer-card *),
+[data-theme="light"] .hover\:border-white\/\[0\.1\]:hover:not(.footer-card, .footer-card *),
+[data-theme="light"] .hover\:border-white\/\[0\.08\]:hover:not(.footer-card, .footer-card *),
+[data-theme="light"] .hover\:border-white\/\[0\.3\]:hover:not(.footer-card, .footer-card *),
+[data-theme="light"] .hover\:border-white\/30:hover:not(.footer-card, .footer-card *) {
+  border-color: var(--card-border-hover);
+}
+
+/* Divider lines */
+[data-theme="light"] .bg-white\/\[0\.08\]:not(.footer-card, .footer-card *) {
+  background-color: var(--divider);
+}
+
+/* Hover text colors */
+[data-theme="light"] .hover\:text-white:hover:not(.footer-card, .footer-card *) {
+  color: var(--text-heading) !important;
+}
+[data-theme="light"] .hover\:text-gh-300:hover:not(.footer-card, .footer-card *) {
+  color: var(--text-link-hover);
+}
+[data-theme="light"] .hover\:text-gh-200:hover:not(.footer-card, .footer-card *) {
+  color: var(--text-heading);
+}
+
+/* Gray text scale remap */
+[data-theme="light"] .text-gray-400:not(.footer-card, .footer-card *, .bg-surface-dark, .bg-surface-dark *) {
+  color: var(--text-body);
+}
+
+/* Game over overlay */
+[data-theme="light"] .bg-black\/85 {
+  background-color: rgba(255, 255, 255, 0.85);
+}
+[data-theme="light"] .bg-black\/40 {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+[data-theme="light"] .bg-black\/20 {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+/* Suspense fallback */
+[data-theme="light"] .bg-black {
+  background-color: var(--page-bg);
+}
+
+/* Card gradient overlay for background images */
+[data-theme="light"] .from-black:not(.footer-card, .footer-card *, .bg-surface-dark, .bg-surface-dark *) {
+  --tw-gradient-from: var(--color-canvas);
+}
+[data-theme="light"] .via-black\/70:not(.footer-card, .footer-card *, .bg-surface-dark, .bg-surface-dark *) {
+  --tw-gradient-via: rgba(250, 249, 245, 0.7);
+}
+[data-theme="light"] .to-black\/50:not(.footer-card, .footer-card *, .bg-surface-dark, .bg-surface-dark *) {
+  --tw-gradient-to: rgba(250, 249, 245, 0.5);
+}
+
+/* ──────────────────────────────────────────────
+   DARK SURFACES IN LIGHT THEME
+   Explicit styling to keep dark surfaces dark in light mode
+   ────────────────────────────────────────────── */
+[data-theme="light"] .footer-card,
+[data-theme="light"] .bg-surface-dark {
+  background-color: var(--color-surface-dark) !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06), inset 0 0 30px rgba(255, 255, 255, 0.03) !important;
+}
+
+[data-theme="light"] .bg-surface-dark-elevated {
+  background-color: var(--color-surface-dark-elevated) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="light"] .bg-surface-dark-soft {
+  background-color: var(--color-surface-dark-soft) !important;
+}
+
+/* Code block backgrounds */
+[data-theme="light"] code,
+[data-theme="light"] pre {
+  background-color: var(--color-surface-dark-soft) !important;
+  color: #faf9f5 !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+/* Ensure text inside dark surfaces is white/gray and readable */
+[data-theme="light"] .footer-card .text-white,
+[data-theme="light"] .bg-surface-dark .text-white,
+[data-theme="light"] .bg-surface-dark-elevated .text-white {
+  color: #faf9f5 !important;
+}
+
+[data-theme="light"] .footer-card .text-gray-400,
+[data-theme="light"] .bg-surface-dark .text-gray-400,
+[data-theme="light"] .bg-surface-dark-elevated .text-gray-400 {
+  color: #ebe6df !important;
+}
+
+[data-theme="light"] .footer-card .text-gh-400,
+[data-theme="light"] .bg-surface-dark .text-gh-400 {
+  color: #ebe6df !important;
+}
+
+[data-theme="light"] .footer-card .text-gh-500,
+[data-theme="light"] .bg-surface-dark .text-gh-500 {
+  color: #a3a3a3 !important;
+}
+
+[data-theme="light"] .footer-card .text-gh-600,
+[data-theme="light"] .bg-surface-dark .text-gh-600 {
+  color: #737373 !important;
+}
+
+[data-theme="light"] .footer-card a,
+[data-theme="light"] .bg-surface-dark a {
+  color: #a3a3a3 !important;
+}
+
+[data-theme="light"] .footer-card a:hover,
+[data-theme="light"] .bg-surface-dark a:hover {
+  color: #faf9f5 !important;
 }

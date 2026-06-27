@@ -19,7 +19,7 @@ export function Footer() {
   ];
 
   return (
-    <Card className="col-span-1 sm:col-span-2 lg:col-span-4 px-6 py-6">
+    <Card className="col-span-1 sm:col-span-2 lg:col-span-4 px-6 py-6 footer-card">
       <div className="flex items-center justify-between">
         <p className="text-gh-500 text-sm">
           © {new Date().getFullYear()} Nishchay Kumar

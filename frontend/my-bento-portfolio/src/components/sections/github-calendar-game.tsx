@@ -197,7 +197,7 @@ export function GithubCalendarGame() {
   // Map contribution levels to color classes
   const getContributionColor = (level: number) => {
     switch (level) {
-      case 0: return "bg-[#161b22] border-transparent";
+      case 0: return "bg-[#161b22] dark:bg-[#161b22] border-transparent";
       case 1: return "bg-[#0e4429] border-transparent";
       case 2: return "bg-[#006d32] border-transparent";
       case 3: return "bg-[#26a641] border-transparent";
@@ -513,13 +513,13 @@ export function GithubCalendarGame() {
           {/* Custom Tooltip */}
           {activeTooltip && !isPlaying && (
             <div 
-              className="absolute z-10 bg-[#161b22] border border-[#30363d] text-white text-[11px] px-2 py-1 rounded shadow-lg pointer-events-none transform -translate-x-1/2 flex flex-col items-center"
+              className="absolute z-10 bg-[var(--tooltip-bg)] border border-[var(--tooltip-border)] text-[var(--text-heading)] text-[11px] px-2 py-1 rounded shadow-lg pointer-events-none transform -translate-x-1/2 flex flex-col items-center"
               style={{ left: `${activeTooltip.x}px`, top: `${activeTooltip.y}px` }}
             >
               <div className="font-medium">
                 <span className="text-emerald-400">{activeTooltip.day.c} commits</span> on {formatDateString(activeTooltip.day.d)}
               </div>
-              <div className="w-2 h-2 bg-[#161b22] border-r border-b border-[#30363d] rotate-45 mt-1 -mb-2" />
+              <div className="w-2 h-2 bg-[var(--tooltip-bg)] border-r border-b border-[var(--tooltip-border)] rotate-45 mt-1 -mb-2" />
             </div>
           )}
 

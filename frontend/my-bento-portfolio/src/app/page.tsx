@@ -16,7 +16,7 @@ import { GithubCalendarGame } from "@/components/sections/github-calendar-game";
 function HomeContent() {
   return (
     <>
-      <div className="min-h-screen p-4 sm:p-6 text-white relative">
+      <div className="min-h-screen p-4 sm:p-6 text-[var(--text-heading)] relative">
         <Toaster position="top-center" />
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           <ContactSection />
@@ -49,7 +49,7 @@ function HomeContent() {
 
 export default function Home() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-black" />}>
+    <Suspense fallback={<div className="min-h-screen bg-[var(--page-bg)]" />}>
       <HomeContent />
     </Suspense>
   );
